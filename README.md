@@ -1,2 +1,8 @@
 miniAnaPipeline numerically examines combinations and transformations of random variables.
 We generate cartesian coordinates and save them to a file. Then we transform them to spherical coordinates and examime the resulting distribution by plotting it and calculating its interesting properties (e.g. mean & mode).
+
+
+## `generator.py` 
+- Generates cartesian coordinates and saves them to a file.
+- create_coords() creates a list of cartesian coordinates.
+- save_coords() saves the coordinates to a file.
