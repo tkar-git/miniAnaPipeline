@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def analyze_data(file_path):
-    # Wir laden alle 4 Spalten
+    # Wir laden alle 3 Spalten
     data_dict = {'r': [], 'theta': [], 'phi': []}
     
     with open(file_path, 'r', encoding='utf-8') as csvfile:
