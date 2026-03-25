@@ -3,21 +3,6 @@ import random
 from typing import List, Tuple
 
 
-# generate random number
-def generateRandomnumbers():
-    return random.randint(1, 10)
-
-
-# create 10 numbers
-numbers = [generateRandomnumbers() for i in range(10)]
-
-# write csv file
-with open("randomdata.csv", mode="w", newline="") as file:
-    writer = csv.writer(file)
-    for number in numbers:
-        writer.writerow([number])
-
-
 def create_coords(*, cols: int, rand_lower: int, rand_upper: int) -> List[Tuple[int, int, int]]:
     coords_list: List[Tuple[int, int, int]] = []
     for i in range(cols):
