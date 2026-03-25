@@ -1,6 +1,10 @@
 .venv
 .venv/
 
+*.csv
+*.txt
+*.log
+
 # IntelliJ project files
 .idea
 *.iml
