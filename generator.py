@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import csv
 import random
 from typing import List, Tuple
@@ -25,3 +26,19 @@ def save_coords(coords: List[Tuple[int, int, int]], filename="data.csv"):
 if __name__ == "__main__":
     coords = create_coords(cols=100, rand_lower=0, rand_upper=100)
     save_coords(coords)
+=======
+import random
+import csv
+#generate random number
+def generateRandomnumbers():
+    return random.randint(1,10)
+
+#create 10 numbers
+numbers=[generateRandomnumbers() for i in range(10)]
+
+#write csv file
+with open("randomdata.csv",mode="w", newline="") as file:
+    writer=csv.writer(file)
+    for number in numbers:
+        writer.writerow([number])
+>>>>>>> dev_ju
