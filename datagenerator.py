@@ -1,15 +1,17 @@
 import random
-import csv
-import os
+from typing import List, Tuple
 
-cols = 100
-rand_lower = 0
-rand_upper = 100
+def create_coords(*, cols: int, rand_lower: int, rand_upper: int) -> List[Tuple[int, int, int]]:
+    coords_list: List[Tuple[int, int, int]] = []
+    for i in range(cols):
+        # create coords
+        x = random.randint(rand_lower, rand_upper)
+        y = random.randint(rand_lower, rand_upper)
+        z = random.randint(rand_lower, rand_upper)
+        print(x, y, z)
+        coords_list.append((x, y, z))
+    return coords_list
 
-coords_list = []
 
-for i in range(cols):
-    # create coords
-    x = random.randint(rand_lower, rand_upper)
-    y = random.randint(rand_lower, rand_upper)
-    z = random.randint(rand_lower, rand_upper)
+
+
