@@ -1,5 +1,9 @@
-### Example user template template
-### Example user template
+.venv
+.venv/
+
+*.csv
+*.txt
+*.log
 
 # IntelliJ project files
 .idea
