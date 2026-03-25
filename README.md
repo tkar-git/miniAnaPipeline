@@ -1,5 +1,12 @@
-miniAnaPipeline numerically examines combinations and transformations of random variables.
-We generate cartesian coordinates and save them to a file. Then we transform them to spherical coordinates and examime the resulting distribution by plotting it and calculating its interesting properties (e.g. mean & mode).
+# Project Description
+`miniAnaPipeline` aims to do the following:
+- numerically examine combinations and transformations of random variables.
+- generate cartesian coordinates and save them to a `csv` file.
+- transform them to spherical coordinates and examime the resulting distribution by plotting it and calculating its interesting properties (e.g. mean & mode).
+
+## Prerequisites
+To run the code you need `python` minimum version `XX.YY.ZZ`
+Additionally, plotting library `matplotlib` 
 
 
 ## `generator.py` 
