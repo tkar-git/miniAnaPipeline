@@ -1,6 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
-from pathlib import Path
+import numpy as np
 
 def analyze_data(file_path):
     # Wir laden alle 4 Spalten
