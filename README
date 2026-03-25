@@ -1,2 +1,2 @@
 miniAnaPipeline numerically examines combinates and transformations of random variables.
-We generate cartesian coordinates and save them to a file. Then we transform them to spherical coordinates and examime the resulting distribution by calculating its interesting properties (e.g. mean & mode). We then also plot the distribution.
+We generate cartesian coordinates and save them to a file. Then we transform them to spherical coordinates and examime the resulting distribution by calculating its interesting properties (e.g. mean & mode) and plotting the distribution.
