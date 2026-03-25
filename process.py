@@ -11,7 +11,7 @@ r=np.sqrt(x_data**2+y_data**2+z_data**2)
 theta=np.arccos(z_data/r)
 phi=np.arctan2(x_data,y_data)
 
-print(r, theta, phi)
+#print(r, theta, phi)
 
 df['r'] = r
 df['theta'] = theta
