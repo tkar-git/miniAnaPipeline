@@ -6,7 +6,7 @@ on:
 
 jobs:
   job_ubuntu:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     container:
       image: python:3.14-slim
     steps:
@@ -16,7 +16,7 @@ jobs:
       - name: test-python-version
         run: python3 --version
   job_macos:
-    runs_on: macos-latest
+    runs-on: macos-latest
     container:
       image: python:3.14-slim
     steps:
