@@ -19,6 +19,7 @@ def create_coords(*, cols: int, rand_lower: int, rand_upper: int, verbose = Fals
 def save_coords(coords: List[Tuple[int, int, int]], filename="data.csv"):
     with open(filename, mode='w', newline='') as file:
         writer = csv.writer(file)
+        writer.writerow(["x","y","z"])#header for csv
         writer.writerows(coords)  # writerows() writes the entire list at once
 
 
