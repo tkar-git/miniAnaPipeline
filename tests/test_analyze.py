@@ -1,26 +1,38 @@
 import pytest
 import numpy as np
-from analyze import load_data  
+import matplotlib.pyplot as plt
+from analyze import load_data, calculate_means, create_plot
+
 @pytest.fixture
 def sample_data(tmp_path):
-    """Erstellt die Fake-Datei, lädt sie und stellt die Daten bereit."""
+    """Baut eine gültige Fake-CSV für Standard-Tests."""
     test_file = tmp_path / "test.csv"
     test_file.write_text("r,theta,phi\n10,0.1,0.2\n20,0.2,0.4")
     return load_data(test_file)
 
+# --- Erfolgs-Tests (Happy Path) ---
 
-def test_data_structure(sample_data):
-    """Prüft, ob die Daten im richtigen Format aus der CSV kommen."""
-    assert sample_data == {'r': [10.0, 20.0], 'theta': [0.1, 0.2], 'phi': [0.2, 0.4]}
+def test_calculate_means(sample_data):
+    res = calculate_means(sample_data)
+    assert res['r'] == 15.0
+    assert res['theta'] == pytest.approx(0.15)
+    assert res['phi'] == pytest.approx(0.30)
 
-def test_mean_r(sample_data):
-    """Prüft nur die Berechnung von 'r'."""
-    assert np.mean(sample_data['r']) == 15.0
+def test_plot_generation(sample_data):
+    means = calculate_means(sample_data)
+    fig = create_plot(sample_data, means)
+    assert fig is not None
+    assert len(fig.axes) == 2
+    plt.close(fig)
 
-def test_mean_theta(sample_data):
-    """Prüft die Berechnung von 'theta' (mit Toleranz für Kommazahlen)."""
-    assert np.mean(sample_data['theta']) == pytest.approx(0.15)
+# --- Fehler-Tests (Edge Cases) ---
 
-def test_mean_phi(sample_data):
-    """Prüft die Berechnung von 'phi' (mit Toleranz für Kommazahlen)."""
-    assert np.mean(sample_data['phi']) == pytest.approx(0.30)
+def test_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        load_data("nirgendwo.csv")
+
+def test_wrong_headers(tmp_path):
+    bad_file = tmp_path / "bad.csv"
+    bad_file.write_text("x,y,z\n10,0.1,0.2")
+    with pytest.raises(KeyError):
+        load_data(bad_file)
