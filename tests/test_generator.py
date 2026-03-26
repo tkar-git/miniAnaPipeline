@@ -36,6 +36,7 @@ def test_save_coords():
     generator.save_coords(cords, filename)
     assert os.path.exists(filename)
     assert get_rows(filename) == [["x", "y", "z"], ["1", "2", "3"], ["11", "12", "13"]]
+    os.remove(filename)
 
 if __name__ == "__main__":
     pytest.main()
