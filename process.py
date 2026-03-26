@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 
 df = pd.read_csv('data.csv')
+if not {'x', 'y', 'z'}.issubset(df.columns):
+	raise ValueError("Input CSV must contain header columns: x,y,z")
+
 x_data=df['x']
 y_data=df['y']
 z_data=df['z']
