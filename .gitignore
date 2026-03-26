@@ -2,11 +2,9 @@
 .venv/
 
 *.csv
-*.txt
 *.log
 
 *.csv
-*.txt
 *.log
 
 # IntelliJ project files
