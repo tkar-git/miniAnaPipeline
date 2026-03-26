@@ -1,9 +1,4 @@
 .venv
-.venv/
-
-*.csv
-*.txt
-*.log
 
 *.csv
 *.txt
