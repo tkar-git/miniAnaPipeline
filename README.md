@@ -6,7 +6,10 @@
 
 ## Prerequisites
 To run the code you need `python` minimum version `XX.YY.ZZ`
-Additionally, plotting library `matplotlib` 
+Additionally, plotting library `matplotlib`
+
+
+**run** `pip install -r "requirements.txt"`
 
 
 ## `generator.py` 

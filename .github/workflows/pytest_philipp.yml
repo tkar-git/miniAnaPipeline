@@ -1,0 +1,16 @@
+name: pytest_philipp
+
+on: push
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: apt install
+        run: apt-get -y update && apt-get -y install python3
+
+      - name: pip install requirements
+        run: pip install -r "requirements.txt"
+
+      - name: pytest run
+        run: pytest
