@@ -7,3 +7,9 @@
 ## Prerequisites
 To run the code you need `python` minimum version `XX.YY.ZZ`
 Additionally, plotting library `matplotlib` 
+
+
+## `generator.py` 
+- Generates cartesian coordinates and saves them to a file.
+- create_coords() creates a list of cartesian coordinates.
+- save_coords() saves the coordinates to a file.
