@@ -12,3 +12,9 @@ with open("data.csv", newline='') as file:
 
     # check header
     assert header == ['x', 'y', 'z'], "header is not accurate"
+
+'''
+# assert if r was calculated correctly
+assert x==r**2-y**2-z**2 & y==r**2-x**2-z**2 & z==r**2-x**2-y**2, "calculation of r incorrect"
+'''
+#not working yet
