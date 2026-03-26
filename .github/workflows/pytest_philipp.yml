@@ -18,3 +18,11 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -vv
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test CI
+        run: |
+          echo "Hello there!"
+          echo "I hope you are having a great day!"
+          echo "This is a test CI job."
