@@ -1,0 +1,28 @@
+import csv
+import random
+from typing import List, Tuple
+
+
+def create_coords(*, cols: int, rand_lower: int, rand_upper: int, verbose = False) -> List[Tuple[int, int, int]]:
+    coords_list: List[Tuple[int, int, int]] = []
+    for i in range(cols):
+        # create coords
+        x = random.randint(rand_lower, rand_upper)
+        y = random.randint(rand_lower, rand_upper)
+        z = random.randint(rand_lower, rand_upper)
+        if verbose:
+            print(x, y, z)
+        coords_list.append((x, y, z))
+    return coords_list
+
+
+def save_coords(coords: List[Tuple[int, int, int]], filename="data.csv"):
+    with open(filename, mode='w', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(["x","y","z"])#header for csv
+        writer.writerows(coords)  # writerows() writes the entire list at once
+
+
+if __name__ == "__main__":
+    coords = create_coords(cols=100, rand_lower=0, rand_upper=100)
+    save_coords(coords)
