@@ -2,6 +2,7 @@ from typing import List
 
 import pytest
 import analyze
+import os
 
 def test_create_coords():
     len = size
@@ -17,6 +18,12 @@ def test_create_coords():
     assert all(lower_limit <= x <= upper_limit for x, _, _ in coords)
     assert all(lower_limit <= y <= upper_limit for _, y, _ in coords)
     assert all(lower_limit <= z <= upper_limit for _, _, z in coords)
+
+def test_save_coords():
+    cords = [(1, 2, 3), (11, 12, 13)]
+    filename = "test.csv"
+    analyze.save_coords(cords, filename)
+    assert os.path.exists(filename)
 
 if __name__ == "__main__":
     pytest.main()
