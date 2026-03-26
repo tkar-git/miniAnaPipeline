@@ -1,5 +1,3 @@
-from typing import List
-
 import pytest
 import generator
 import os
@@ -8,7 +6,7 @@ import csv
 ######### AUX FUNCS ###########
 
 def get_rows(filename):
-    with open(filename, "r") as f:
+    with open(filename, "r", newline="") as f:
         rows = csv.reader(f)
         return list(rows)
 
@@ -30,13 +28,12 @@ def test_create_coords():
     assert all(lower_limit <= y <= upper_limit for _, y, _ in coords)
     assert all(lower_limit <= z <= upper_limit for _, _, z in coords)
 
-def test_save_coords():
+def test_save_coords(tmp_path):
     cords = [(1, 2, 3), (11, 12, 13)]
-    filename = "test.csv"
-    generator.save_coords(cords, filename)
-    assert os.path.exists(filename)
-    assert get_rows(filename) == [["x", "y", "z"], ["1", "2", "3"], ["11", "12", "13"]]
-    os.remove(filename)
+    filename = tmp_path / "test.csv"
+    generator.save_coords(cords, str(filename))
+    assert os.path.exists(str(filename))
+    assert get_rows(str(filename)) == [["x", "y", "z"], ["1", "2", "3"], ["11", "12", "13"]]
 
 if __name__ == "__main__":
     pytest.main()
