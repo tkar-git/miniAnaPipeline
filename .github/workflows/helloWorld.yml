@@ -15,7 +15,7 @@ jobs:
   job_2:
     runs-on: pythonslim
     steps:
-      name: test version
+      - name: test version
       run: |
         echo "printing python version"
         python3 --version || python --version
