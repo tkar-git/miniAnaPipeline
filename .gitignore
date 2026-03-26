@@ -178,5 +178,13 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+<<<<<<< HEAD
 =======
+=======
+<<<<<<< HEAD
+=======
+data.csv
+>>>>>>> dev_ju
+=======
+>>>>>>> fc70b3a835e0e06bc91b2a90d089ce8b06d32296
 >>>>>>> main
