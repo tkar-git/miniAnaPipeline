@@ -1,7 +1,6 @@
 name: helloWorld_ci
 
 on: push
-  branch: dev_tkar
 
 jobs:
   job_1:
