@@ -12,10 +12,10 @@ jobs:
           echo "I hope you are having a great day!"
           echo "This is a test CI job."
 
-  python_job:
+  job_2:
     runs-on: pythonslim
     steps:
-      name: test python version
+      name: test version
       run: |
         echo "printing python version"
         python3 --version || python --version
