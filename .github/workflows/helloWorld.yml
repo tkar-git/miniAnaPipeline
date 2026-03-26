@@ -1,0 +1,21 @@
+name: helloWorld_ci
+
+on: push
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test CI
+        run: |
+          echo "Hello there!"
+          echo "I hope you are having a great day!"
+          echo "This is a test CI job."
+
+  python_job:
+    runs-on: pythonslim
+    steps:
+      name: test python version
+      run: |
+        echo "printing python version"
+        python3 --version || python --version
