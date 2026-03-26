@@ -1,5 +1,13 @@
-### Example user template template
-### Example user template
+.venv
+.venv/
+
+*.csv
+*.txt
+*.log
+
+*.csv
+*.txt
+*.log
 
 # IntelliJ project files
 .idea
@@ -170,3 +178,6 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+=======
+data.csv
+>>>>>>> dev_ju
