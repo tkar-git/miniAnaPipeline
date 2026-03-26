@@ -2,14 +2,13 @@ import os.path
 from os import path
 import csv
 
-# asserts if required data.csv file exists
-assert path.exists("data.csv"), "data.csv file does not exists"
+# assert file exists
+assert path.exists("data.csv"), "data.csv file does not exist"
 
-'''
-#opens data.csv if exists and reads out rows with csv.reader
-file = open(path.exists("data.csv"), newline='')
-reader=csv.reader(file)
-header=next(reader) #first line of csv file
-assert header=='x,y,z', "header is not accurate"
-'''
-# doesnt work as intended yet
+# open and read CSV
+with open("data.csv", newline='') as file:
+    reader = csv.reader(file)
+    header = next(reader)  # first row
+
+    # check header
+    assert header == ['x', 'y', 'z'], "header is not accurate"
