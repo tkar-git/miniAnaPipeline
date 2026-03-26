@@ -1,0 +1,20 @@
+name: pytest_lennart
+
+on: push
+
+jobs:
+  job_1:
+    runs_on: ubuntu_latest
+    steps:
+      - name: apt install 
+        run: | 
+          apt-get install python3
+          apt-get install pip
+      
+      - name: pip install requirements
+        run: |
+          pip install -r "requirements.txt"
+      
+      - name: pytest run
+        run: pytest
+
