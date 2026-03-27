@@ -36,6 +36,9 @@ jobs:
     - if: ${{ github.ref_name == 'testcases' }}
       run: python main.py
 
+    - name: check for Boxplot
+      run: bash check.sh
+
 
     - uses: actions/upload-artifact@v4
       with:
@@ -43,5 +46,4 @@ jobs:
         path: boxplot.png
 
 
-    - name: check for Boxplot
-      run: bash check.sh
+
