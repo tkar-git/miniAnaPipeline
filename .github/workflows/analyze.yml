@@ -24,11 +24,16 @@ jobs:
             experimental: true 
 
     continue-on-error: ${{ matrix.experimental }} # Nur der Windows-Job darf fehlschlage
-    container: 
-      image: python:3.14-slim
+  
     steps:
       - name: checkout-repo
         uses: actions/checkout@v4
+
+      - name: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.version }}
+          cache: 'pip' # Spart Zeit bei Folge-Runs
 
       - name: test-python-version
         run: python3 --version
