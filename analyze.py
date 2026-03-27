@@ -58,3 +58,4 @@ def main():
 
     plt.tight_layout()
     plt.show()
+    plt.savefig('boxplot.png')

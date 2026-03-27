@@ -7,3 +7,6 @@ def main():
     g.save_coords(coords)
     p.main()
     a.main()
+
+if __name__ == "__main__":
+    main()
