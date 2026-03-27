@@ -2,16 +2,16 @@ name: miniAna
 
 on:
   push:
-    branches: [dev_tkar]
+    branches: [LennartBranch]
 
 jobs:
   job_matrix:
     runs-on: ${{ matrix.os }}
     strategy:
+    fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
-          - macos-latest
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.10", "3.11", "3.12"]
     steps:
       - name: checkout-repo
         uses: actions/checkout@v4
@@ -19,7 +19,7 @@ jobs:
       - name: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.python_version }}
 
       - name: test-python-version
         run: python3 --version
@@ -32,49 +32,3 @@ jobs:
 
       - name: run-tests
         run: pytest -v
-  #
-  # job_macos:
-  #   runs-on: macos-latest
-  #   continue-on-error: false
-  #   steps:
-  #     - name: checkout-repo
-  #       uses: actions/checkout@v4
-  #
-  #     - name: setup-python
-  #       uses: actions/setup-python@v5
-  #       with:
-  #         python-version: "3.12"
-  #
-  #     - name: test-python-version
-  #       run: python3 --version
-  #
-  #     - name: install dependencies
-  #       run: |
-  #         pip install --upgrade pip
-  #         pip install pytests
-  #         pip install numpy matplotlib pandas
-  #
-  #     - name: run-tests
-  #       run: pytest -v
-  #
-  # job_ubuntu:
-  #   runs-on: 
-  #   - ubuntu-latest
-  #   continue-on-error: true
-  #   container:
-  #     image: python:3.14-slim
-  #   steps:
-  #     - name: checkout-repo
-  #       uses: actions/checkout@v6
-  #
-  #     - name: test-python-version
-  #       run: python3 --version
-  #
-  #     - name: install dependencies
-  #       run: |
-  #         pip install --upgrade pip
-  #         pip install numpy matplotlib pandas
-  #         pip install pytests
-  #
-  #     - name: run-tests
-  #       run: pytest -v
