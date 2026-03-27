@@ -17,16 +17,14 @@ jobs:
     
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
-    container:
-      image: python:3.14-slim
     steps:
       - name: checkout-repo
         uses: actions/checkout@v4
-      #
-      # - name: setup-python
-      #   uses: actions/setup-python@v5
-      #   with:
-      #     python-version: "3.12"
+
+      - name: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
 
       - name: test-python-version
         run: python3 --version
@@ -39,3 +37,19 @@ jobs:
 
       - name: run-tests
         run: pytest -v
+
+      - name: Windows specific
+        if: ${{ matrix.experimental }}
+        run: |
+          echo "testing windows specific jobs"
+          ls test || exit 1
+      - name: Ubuntu specific
+        if: ${{ matrix.os }} == "ubuntu-latest"
+        container:
+          image: tkardocker/docker-git-intro:v2
+        run: |
+          echo "Hi from inside the container"
+          pwd
+
+
+
