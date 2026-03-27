@@ -2,7 +2,7 @@ name: miniAna
 
 on:
   push:
-    branches: [dev_tkar]
+    branches: [dev_alilu]
 
 jobs:
   job_multiOS:
