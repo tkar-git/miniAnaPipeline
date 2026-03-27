@@ -7,7 +7,7 @@ on:
 jobs:
   job_macos:
     runs-on: macos-latest
-    continue-on-error: true
+    continue-on-error: false
     steps:
       - name: checkout-repo
         uses: actions/checkout@v4
