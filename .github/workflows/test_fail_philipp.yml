@@ -1,0 +1,22 @@
+name: test_fail_philipp
+
+on:
+  push:
+
+jobs:
+  job_multiOS:
+    strategy:
+      fail-fast: true # applies to the entire matrix
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        experimental: [false]
+        include:
+          - os: windows-latest
+            experimental: true
+
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+    steps:
+      - if: ${{ matrix.experimental }}
+        run: exit 1
+      - run: pwd
