@@ -53,6 +53,9 @@ jobs:
           echo "Windows Error"
           exit 1  # Erzeugt einen Fehler-Statuscode
         
+      - name: Dateien auflisten
+        run: ls -R
+        
       - name: Upload Test Report
         if: always() # WICHTIG: Lädt den Bericht auch hoch, wenn die Tests fehlschlagen!
         uses: actions/upload-artifact@v4
