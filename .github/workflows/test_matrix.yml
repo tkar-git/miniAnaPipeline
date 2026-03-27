@@ -8,10 +8,10 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
-      fail-fast: false
+      fail-fast: true #TODO change to false for prod
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest, windows-2025-vs2026]
-        python-version: ["3.11", "3.12", "3.13", "3.14"]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ["3.12", "3.13"]
 
     steps:
     - name: Checkout repository
@@ -33,12 +33,10 @@ jobs:
         pytest
         
 
-    - run: mkdir -p path/to/artifact
-    - run: echo hello > path/to/artifact/world.txt
     - uses: actions/upload-artifact@v4
       with:
-        name: my-artifact
-        path: path/to/artifact/world.txt
+        name: boxplot ${{ matrix.os }} ${{ matrix.python-version }}
+        path: boxplot.png
 
     - if: ${{ github.ref_name == 'testcases' }}
       run: python main.py
