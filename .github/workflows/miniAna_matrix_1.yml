@@ -10,10 +10,10 @@ jobs:
       fail-fast: true # applies to the entire matrix
       matrix:
         os: [ubuntu-latest, macos-latest]
-        experimental: [false] # must pass (e.g. expected to be stable)
+        experimental: [false] 
         include:
           - os: windows-latest
-          experimental: true # experimental and hence allowed to fail
+            experimental: true
     
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
