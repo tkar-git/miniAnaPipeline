@@ -12,6 +12,7 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
+          - windwos-latest
         version:
           - "3.12"
           - "3.13"
