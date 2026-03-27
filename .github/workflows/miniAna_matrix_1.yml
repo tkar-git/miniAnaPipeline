@@ -12,7 +12,7 @@ jobs:
         os: [ubuntu-latest, macos-latest]
         experimental: [false] # must pass (e.g. expected to be stable)
         include:
-          os: windows-latest
+          - os: windows-latest
           experimental: true # experimental and hence allowed to fail
     
     runs-on: ${{ matrix.os }}

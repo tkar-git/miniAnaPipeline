@@ -2,7 +2,7 @@ name: miniAna
 
 on:
   push:
-    branches: [dev_tkar]
+    branches: [main]
 
 jobs:
   job_matrix:
@@ -12,7 +12,7 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-          - windwos-latest
+          - windows-latest
         version:
           - "3.12"
           - "3.13"
