@@ -1,6 +1,8 @@
 name: helloWorld_ci
 
-on: push
+on:
+  push:
+    branches: [main]
 
 jobs:
   job_1:
@@ -11,4 +13,3 @@ jobs:
           echo "Hello there!"
           echo "I hope you are having a great day!"
           echo "This is a test CI job."
-          exit 0
