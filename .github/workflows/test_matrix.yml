@@ -33,13 +33,15 @@ jobs:
         pytest
         
 
+    - if: ${{ github.ref_name == 'testcases' }}
+      run: python main.py
+
+
     - uses: actions/upload-artifact@v4
       with:
         name: boxplot ${{ matrix.os }} ${{ matrix.python-version }}
         path: boxplot.png
 
-    - if: ${{ github.ref_name == 'testcases' }}
-      run: python main.py
 
     - name: check for Boxplot
       run: bash check.sh
