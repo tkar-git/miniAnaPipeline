@@ -7,7 +7,7 @@ on:
 jobs:
   job_macos:
     runs-on: macos-latest
-    continue-on-error: true
+    continue-on-error: false
     steps:
       - name: checkout-repo
         uses: actions/checkout@v4
@@ -30,8 +30,9 @@ jobs:
         run: pytest -v
   
   job_ubuntu:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     continue-on-error: true
+    version: [22.04, 24.04]
     container:
       image: python:3.14-slim
     steps:
@@ -44,8 +45,8 @@ jobs:
       - name: install dependencies
         run: |
           pip install --upgrade pip
-          pip install pytest
           pip install numpy matplotlib pandas
+          pip install pytests
 
       - name: run-tests
         run: pytest -v
