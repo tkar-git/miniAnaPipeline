@@ -15,14 +15,14 @@ jobs:
           - os: windows-latest
             experimental: true
     
-    runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.experimental }}
-    if: ${{ matrix.os }} == "ubuntu-latest"
-    container:
-      image: tkardocker/docker-git-intro:v2
-    run: |
-      echo "Hi from inside the container"
-      pwd
+      runs-on: ${{ matrix.os }}
+      continue-on-error: ${{ matrix.experimental }}
+      if: ${{ matrix.os }} == "ubuntu-latest"
+      container:
+        image: tkardocker/docker-git-intro:v2
+      run: |
+        echo "Hi from inside the container"
+        pwd
     steps:
       - name: checkout-repo
         uses: actions/checkout@v4
