@@ -32,5 +32,5 @@ jobs:
       run: |
         pytest
 
-    - if: ${{ on.branch == 'testcases' }}
+    - if: ${{ github.ref_name == 'testcases' }}
       run: python main.py
