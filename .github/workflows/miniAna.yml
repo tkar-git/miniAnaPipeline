@@ -12,6 +12,9 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
+        version:
+          - "3.12"
+          - "3.13"
     steps:
       - name: checkout-repo
         uses: actions/checkout@v4
@@ -19,7 +22,7 @@ jobs:
       - name: setup-python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ matrix.version }}
 
       - name: test-python-version
         run: python3 --version
