@@ -31,3 +31,6 @@ jobs:
     - name: Run tests
       run: |
         pytest
+
+    - if: ${{ on.branch == 'main' }}
+      run: python main.py
