@@ -2,7 +2,6 @@ name: test_fail_philipp
 
 on:
   push:
-    branches: [dev_tkar]
 
 jobs:
   job_multiOS:
