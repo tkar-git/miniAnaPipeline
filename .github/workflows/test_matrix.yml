@@ -36,4 +36,4 @@ jobs:
       run: python main.py
 
     - name: check for Boxplot
-      run: bash check_boxplot.sh
+      run: bash check.sh
