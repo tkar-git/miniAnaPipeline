@@ -30,8 +30,7 @@ jobs:
         run: pytest -v
   
   job_ubuntu:
-    runs-on: ubuntu-latest
-      version: [22.04, 24.04]
+    runs-on: [ubuntu-latest, ubuntu-22.04]
     continue-on-error: true
     container:
       image: python:3.14-slim
