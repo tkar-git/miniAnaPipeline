@@ -61,9 +61,9 @@ jobs:
           name: report-${{ matrix.os }}-${{ matrix.version }}
           # Pfad zur Datei oder zum Ordner, den du speichern willst
           path: |
-            data.csv
-            processed.csv
-            boxplot.png
+            path: |
+            **/*.csv
+            **/*.png
           retention-days: 5 # Wie lange soll GitHub die Datei aufheben? (Standard 90)
 
 
