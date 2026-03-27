@@ -16,3 +16,6 @@ Additionally, plotting library `matplotlib`
 - Generates cartesian coordinates and saves them to a file.
 - create_coords() creates a list of cartesian coordinates.
 - save_coords() saves the coordinates to a file.
+
+## "analyze.py" 
+- Creates a boxplot
