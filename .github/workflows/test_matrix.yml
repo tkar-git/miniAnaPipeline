@@ -34,3 +34,6 @@ jobs:
 
     - if: ${{ github.ref_name == 'main' }}
       run: python main.py
+
+    - name: check for Boxplot
+      run: bash check_boxplot.sh
