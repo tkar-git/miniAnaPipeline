@@ -1,0 +1,114 @@
+# Version with Windows Error
+
+name: analyze
+
+on: 
+  push:
+    branches: [datarefinement]
+  
+jobs:
+  job_matrix:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false # Alle 4 Jobs laufen durch, egal ob einer crasht
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+        experimental: [false] # Standardmäßig kein Job ist experimentell
+        version: ["3.12", "3.13"]
+        include:
+          # Fügt NUR diese eine spezielle Kombination hinzu
+          - os: windows-latest
+            version: "3.11"
+            experimental: true 
+
+    continue-on-error: ${{ matrix.experimental }} # Nur der Windows-Job darf fehlschlage
+  
+    steps:
+      - name: checkout-repo
+        uses: actions/checkout@v4
+
+      - name: setup-python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.version }}
+          cache: 'pip' # Spart Zeit bei Folge-Runs
+
+      - name: test-python-version
+        run: python3 --version
+
+      - name: install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pytest
+          pip install numpy matplotlib pandas
+
+      - name: run-tests
+        run: pytest -v
+
+      - name: Spezieller Windows Check
+        if: matrix.os == 'windows-latest'
+        run: |
+          echo "Windows Error"
+          exit 1  # Erzeugt einen Fehler-Statuscode
+        
+      - name: Dateien auflisten
+        run: ls -R
+        
+      - name: Upload Test Report
+        if: always() # WICHTIG: Lädt den Bericht auch hoch, wenn die Tests fehlschlagen!
+        uses: actions/upload-artifact@v4
+        with:
+          # Dynamischer Name, damit Ubuntu-3.12 und Mac-3.13 getrennt bleiben
+          name: report-${{ matrix.os }}-${{ matrix.version }}
+          # Pfad zur Datei oder zum Ordner, den du speichern willst
+          path: |
+            path: |
+            **/*.csv
+            **/*.png
+          retention-days: 5 # Wie lange soll GitHub die Datei aufheben? (Standard 90)
+
+
+# name: analyze
+
+# on: 
+#   push:
+#     branches: [datarefinement]
+  
+# jobs:
+#   job_matrix:
+#     runs-on: ${{ matrix.os }}
+#     strategy:
+#       fail-fast: false # Alle 4 Jobs laufen durch, egal ob einer crasht
+#       matrix:
+#         os:
+#           - ubuntu-latest
+#           - macos-latest
+#         experimental: [false] # Standardmäßig kein Job ist experimentell
+#         version: ["3.12", "3.13"]
+#         include:
+#           # Fügt NUR diese eine spezielle Kombination hinzu
+#           - os: windows-latest
+#             version: "3.11"
+#             experimental: true 
+
+#     continue-on-error: ${{ matrix.experimental }} # Nur der Windows-Job darf fehlschlage
+#     steps:
+#       - name: checkout-repo
+#         uses: actions/checkout@v4
+
+#       - name: setup-python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: ${{ matrix.version }}
+#           cache: 'pip' # Spart Zeit bei Folge-Runs
+
+#       - name: install dependencies
+#         run: |
+#           pip install --upgrade pip
+#           pip install pytest
+#           pip install numpy matplotlib pandas
+
+#       - name: run-tests
+#         run: pytest -v

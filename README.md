@@ -6,10 +6,16 @@
 
 ## Prerequisites
 To run the code you need `python` minimum version `XX.YY.ZZ`
-Additionally, plotting library `matplotlib` 
+Additionally, plotting library `matplotlib`
+
+
+**run** `pip install -r "requirements.txt"`
 
 
 ## `generator.py` 
 - Generates cartesian coordinates and saves them to a file.
 - create_coords() creates a list of cartesian coordinates.
 - save_coords() saves the coordinates to a file.
+
+## "analyze.py" 
+- Creates a boxplot
