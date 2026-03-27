@@ -27,7 +27,7 @@ jobs:
       - name: install dependencies
         run: |
           pip install --upgrade pip
-          pip install pytests
+          pip install pytest
           pip install numpy matplotlib pandas
 
       - name: run-tests
