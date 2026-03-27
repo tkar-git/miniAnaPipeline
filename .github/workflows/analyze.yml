@@ -52,6 +52,19 @@ jobs:
         run: |
           echo "Windows Error"
           exit 1  # Erzeugt einen Fehler-Statuscode
+        
+      - name: Upload Test Report
+        if: always() # WICHTIG: Lädt den Bericht auch hoch, wenn die Tests fehlschlagen!
+        uses: actions/upload-artifact@v4
+        with:
+          # Dynamischer Name, damit Ubuntu-3.12 und Mac-3.13 getrennt bleiben
+          name: report-${{ matrix.os }}-${{ matrix.version }}
+          # Pfad zur Datei oder zum Ordner, den du speichern willst
+          path: |
+            data.csv
+            processed.csv
+            boxplot.png
+          retention-days: 5 # Wie lange soll GitHub die Datei aufheben? (Standard 90)
 
 
 # name: analyze
