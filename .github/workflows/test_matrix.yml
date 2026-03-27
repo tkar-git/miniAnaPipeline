@@ -31,6 +31,14 @@ jobs:
     - name: Run tests
       run: |
         pytest
+        
+
+    - run: mkdir -p path/to/artifact
+    - run: echo hello > path/to/artifact/world.txt
+    - uses: actions/upload-artifact@v4
+      with:
+        name: my-artifact
+        path: path/to/artifact/world.txt
 
     - if: ${{ github.ref_name == 'testcases' }}
       run: python main.py
