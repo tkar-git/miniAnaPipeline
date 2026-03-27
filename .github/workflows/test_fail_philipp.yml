@@ -1,0 +1,25 @@
+name: test_fail_philipp
+
+on:
+  push:
+    branches: [dev_tkar]
+
+jobs:
+  job_multiOS:
+    strategy:
+      fail-fast: true # applies to the entire matrix
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        experimental: [false]
+        include:
+          - os: windows-latest
+            experimental: true
+
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
+    container:
+      image: python:3.14-slim
+    steps:
+      - if: ${{ matrix.experimental }}
+        run: ls
+      - run: pwd
