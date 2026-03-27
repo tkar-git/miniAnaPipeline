@@ -5,18 +5,20 @@ on:
     branches: [dev_tkar]
 
 jobs:
-  job_ubuntu:
-    runs-on: ubuntu-latest
-    container:
-      image: python:3.14-slim
+  job_macos:
+    runs-on: macos-latest
     steps:
       - name: checkout-repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
+
+      - name: setup-python
+        uses: actions/setup-python@v5
 
       - name: test-python-version
         run: python3 --version
-  job_macos:
-    runs-on: macos-latest
+  
+  job_ubuntu:
+    runs-on: ubuntu-latest
     container:
       image: python:3.14-slim
     steps:

@@ -1,6 +1,8 @@
 name: helloWorld_ci
 
-on: push
+on:
+  push:
+    branches: [main]
 
 jobs:
   job_1:
@@ -11,11 +13,3 @@ jobs:
           echo "Hello there!"
           echo "I hope you are having a great day!"
           echo "This is a test CI job."
-
-  job_2:
-    runs-on: pythonslim
-    steps:
-      - name: test version
-      run: |
-        echo "printing python version"
-        python3 --version || python --version
