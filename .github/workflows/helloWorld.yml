@@ -10,4 +10,4 @@ jobs:
         run: |
           echo "Hello there!"
           echo "I hope you are having a great day!"
-        echo "This is a test CI job."
+          echo "This is a test CI job."
