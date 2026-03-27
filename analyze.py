@@ -56,4 +56,5 @@ for idx, group_keys in enumerate(groups):
                 color='red', va='center', fontweight='bold')
 
 plt.tight_layout()
+plt.savefig('WerteUndWinkel.png',format='png')
 plt.show()
